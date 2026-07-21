@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* -----------------------------------------------------------------------
+   Design tokens — blue/white base matching the site logo, with a sky-blue
+   accent. These are fallback defaults — the actual live colors are
+   overridden per-request from Settings → Appearance (see lib/theme.ts),
+   so an admin can retune the whole palette without touching this file.
+   Fraunces (display) + Inter (body) + IBM Plex Mono (data/utility),
+   loaded via <link> tags in layout.tsx so no build-time font fetch is
+   required — the browser fetches them at runtime.
+----------------------------------------------------------------------- */
+:root {
+  --color-sand: #ffffff;
+  --color-surface: #ffffff;
+  --color-ink: #16324a;
+  --color-ink-soft: #3f5a70;
+  --color-muted: #7c93a3;
+  --color-border: #e1eaf0;
+  --color-jade: #1b4965;
+  --color-jade-light: #3d729a;
+  --color-jade-dark: #0d2b3f;
+  --color-gold: #4fa8c9;
+  --color-gold-light: #79c0dc;
+  --color-clay: #357e9c;
+  --font-display: "Fraunces", "Noto Serif Thai", Georgia, serif;
+  --font-body: "Inter", "Noto Sans Thai", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", "Noto Sans Mono", monospace;
+}
+
+@theme inline {
+  --color-sand: var(--color-sand);
+  --color-surface: var(--color-surface);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-muted: var(--color-muted);
+  --color-border: var(--color-border);
+  --color-jade: var(--color-jade);
+  --color-jade-light: var(--color-jade-light);
+  --color-jade-dark: var(--color-jade-dark);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-clay: var(--color-clay);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-sand);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-data {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-jade-dark);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dashed route-line signature motif, used as a section divider */
+.route-line {
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-gold) 0,
+    var(--color-gold) 6px,
+    transparent 6px,
+    transparent 14px
+  );
+}
